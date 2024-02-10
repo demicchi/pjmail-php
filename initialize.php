@@ -27,3 +27,4 @@ require_once dirname(__FILE__)."/class/PJMailException.php";
 // composer libraries
 require_once dirname(__FILE__)."/vendor/autoload.php";
 require_once dirname(__FILE__)."/class/DictMail.php";
+require_once dirname(__FILE__)."/class/DictSamlSession.php";
