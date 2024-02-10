@@ -1,0 +1,33 @@
+PJMAIL_E_DEFAULT: Something wrong.
+PJMAIL_E_YAML_LOAD_FAILURE: Failed to load the yaml file.
+PJMAIL_E_DB_CONNECT_FAILURE: Failed to connect to the database.
+PJMAIL_E_DB_UNSUPPORTED: Unsupported database.
+PJMAIL_E_INVALID_RUNNING_MODE: PJMAIL_RUNNING_MODE is invalid.
+PJMAIL_E_MAIL_DTO_PARAMETER_MISSING: Required parameters are not set for a Mail DTO.
+PJMAIL_E_MAIL_INVALID_RECEIVED_DATE: The received date is invalid.
+PJMAIL_E_MAIL_INVALID_HEADER_DATE: The date in the mail header is invalid.
+PJMAIL_E_INVALID_ADD_MAIL_METHOD: The configuration 'add_mail_method' is invalid.
+PJMAIL_E_INVALID_TICKET_LOCATOR: The ticket locator is invalid.
+PJMAIL_E_INVALID_TICKET_LOCATOR_ORIGIN: The origin of the ticket locator is invalid.
+PJMAIL_E_DB_INSERT_MAIL_FAILURE: Failed to insert a mail into the database.
+PJMAIL_E_DB_SELECT_MAIL_FAILURE: Failed to select mails from the database.
+PJMAIL_E_DB_FETCH_MAIL_FAILURE: Failed to fetch mails from the database.
+PJMAIL_E_DB_INVALID_TIMESTAMP: The timestamp is invalid.
+PJMAIL_E_SAML_BAD_CONFIG: The SAML config is incorrect.
+PJMAIL_E_SAML_SESSION_INVALID_CREATED_DATE: The created date of the SAML session is invalid.
+PJMAIL_E_SAML_SESSION_FAILURE: Failed to start a SAML session.
+PJMAIL_E_SAML_SESSION_DTO_PARAMETER_MISSING: Required parameters are not set for a SAML session DTO.
+PJMAIL_E_SAML_SESSION_DTO_DATE_FAILURE: Failed to generate a DateTime object for a SAML session DTO.
+PJMAIL_E_SAML_SESSION_DATE_FAILURE: Failed to calculate an expiration time for a SAML session.
+PJMAIL_E_SAML_SESSION_EMPTY_TOKEN: The token of the SAML session is empty.
+PJMAIL_E_SAML_LOGIN_FAILURE: Failed to initiate a SAML login procedure.
+PJMAIL_E_SAML_ACS_FAILURE: Failed to initiate a SAML assertion consumer service procedure.
+PJMAIL_E_SAML_ACS_INVALID_TOKEN: The SAML token has already been used or is not valid.
+PJMAIL_E_SAML_ACS_FAILED: Failed to process the SAML request.
+PJMAIL_E_SAML_ACS_NOT_AUTHED: The SAML response cannot change the current status into authenticated.
+PJMAIL_E_SAML_METADATA_FAILURE: Failed to generate SAML metadata.
+PJMAIL_E_DB_INSERT_SAML_SESSION_FAILURE: Failed to insert a SAML session from the database.
+PJMAIL_E_DB_SELECT_SAML_SESSION_FAILURE: Failed to select SAML sessions from the database.
+PJMAIL_E_DB_FETCH_SAML_SESSION_FAILURE: Failed to fetch SAML sessions from the database.
+PJMAIL_E_DB_DELETE_SAML_SESSION_FAILURE: Failed to delete SAML sessions from the database.
+PJMAIL_W_NO_TICKET_LOCATOR: Failed to get any ticket locators from the envelope-to address.

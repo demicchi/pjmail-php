@@ -1,0 +1,78 @@
+# language = {en}
+#   You can localize messages and save to config/error.{language}.yml
+language: en
+logging:
+  # level = {debug|info|warn|error}
+  level: debug
+  file:
+    # ui means webui to read mails.
+    ui: ./log/pjmail-ui.log
+    # mail means the interface to postfix.
+    mail: ./log/pjmail-mail.log
+# project_ticket_separator is a character that divides a username of a mail address into a project and a ticket number.
+# e.g. When project_ticket_separator is "-", greatproject-123@my-awesome-product.com will be parsed such as
+# the project is greatproject and the ticket number is 123.
+project_ticket_separator: "-"
+# mail_domain specifies which mails sent to the domain should be processed.
+mail_domain: my-awesome-product.com
+mail_stdin:
+  # timeout is the number of seconds to wait for STDIN
+  timeout: 5
+  # max_length is bytes to read STDIN
+  max_length: 52428800
+# add_mail_method = {content_filter|alias}
+#   add_mail_method specifies how add_mail.php should get an envelope-to and envelope-from address.
+#   * content_filter: intended to be used as a content filter of Postfix
+#       master.cf example:
+#         smtp      inet  n       -       n       -       -       smtpd -o content_filter=pjmail:dummy
+#         pjmail    unix  -       n       n       -       10      pipe
+#         flags=FRq. user=www-data argv=/var/www/html/pjmail/add_mail.php ${sender} ${recipient}
+#   * alias: intended to be used as an alias address of Postfix
+#       main.cf example:
+#         alias_maps = hash:/etc/aliases, regexp:/etc/postfix/aliases.regexp
+#         alias_database = hash:/etc/aliases, regexp:/etc/postfix/aliases.regexp
+#       aliases.regexp example:
+#         /^.+-.+(@my-awesome-product\.com)?$/ "| /usr/bin/php /var/www/html/pjmail/add_mail.php"
+#         /^.*$/ /dev/null
+add_mail_method: content_filter
+# html_cache is the number of seconds to hold the cache for HTMLs. 0 means no cache.
+html_cache: 0
+database:
+  # driver = {pgsql}
+  driver: pgsql
+  ui:
+    pgsql:
+      connection_string: host=127.0.0.1 port=5432 dbname=pjmail user=pjmail-ui password=pjmail-ui-password
+  mail:
+    pgsql:
+      connection_string: host=127.0.0.1 port=5432 dbname=pjmail user=pjmail-mail password=pjmail-mail-password
+auth:
+  # method = {saml}
+  method: saml
+  saml:
+    # session_lifetime is the number of seconds to keep session cookies. 0 means until the browser is closed.
+    # Note that the default PHP's session.gc_maxlifetime is 1440 seconds (= 24 minutes).
+    session_lifetime: 0
+    # expected_maximum_token_lifetime is the maximum number of seconds that a SAML token may be valid for.
+    # This value is used to avoid replay attacks.
+    expected_maximum_token_lifetime: 86400
+    # strict specifies whether to reject unsigned or unencrypted messages.
+    strict: true
+    # baseurl specifies where this PJMail is stored.
+    baseurl: http://127.0.0.1/pjmail/
+    # user_id specifies which attribute should be used as the id of the user.
+    # user_display_name specifies which attribute should be used as the display name of the user.
+    # Note that attributes of Microsoft AzureAD (EntraID) are in URI format.
+    user_id: http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress
+    user_display_name: http://schemas.microsoft.com/identity/claims/displayname
+    sp:
+      # name_id_format = {email|unspecified}
+      name_id_format: email
+      x509cert: MIIC12345
+      private_key: MIIE12345
+    idp:
+      entity_id: https://sts.windows.net/12345678-1234-1234-1234-1234567890ab/
+      single_sign_on_service:
+        url: https://login.microsoftonline.com/12345678-1234-1234-1234-1234567890ab/saml2
+      x509cert: MIIC67890
+      
