@@ -3,6 +3,8 @@ namespace StudioDemmys\pjmail;
 
 use StudioDemmys\pjmail\type\TicketLocator;
 
+const HTML_PURIFIER_CACHE_DIR = "./htmlpurifier_cache";
+
 define("PJMAIL_RUNNING_MODE", "ui");
 require_once "initialize.php";
 
@@ -45,6 +47,7 @@ if ($project == "" || $ticket == "") {
     } else {
         foreach ($mail_array as $mail) {
             $config = \HTMLPurifier_Config::createDefault();
+            $config->set('Cache.SerializerPath', Common::getAbsolutePath(HTML_PURIFIER_CACHE_DIR));
             $config->set('URI.DisableExternal', true);
             $config->set('URI.DisableExternalResources', true);
             $config->set('URI.DisableResources', true);
