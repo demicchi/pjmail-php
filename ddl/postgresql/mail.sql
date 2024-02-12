@@ -20,9 +20,6 @@ create table mail
     mail_raw            text
 );
 
-alter table mail
-    owner to pjmail;
-
 grant insert, select, update on mail to "pjmail-mail";
 
 grant select on mail to "pjmail-ui";

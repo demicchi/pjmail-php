@@ -8,8 +8,6 @@ create table saml_session
     created    timestamp not null
 );
 
-alter table saml_session
-    owner to pjmail;
 
 grant delete, insert, select on saml_session to "pjmail-ui";
 
