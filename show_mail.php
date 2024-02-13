@@ -6,7 +6,7 @@ use StudioDemmys\pjmail\type\TicketLocator;
 const HTML_PURIFIER_CACHE_DIR = "./htmlpurifier_cache";
 
 define("PJMAIL_RUNNING_MODE", "ui");
-require_once dirname(__FILE__)."initialize.php";
+require_once dirname(__FILE__)."/initialize.php";
 
 Logging::debug("running in " . PJMAIL_RUNNING_MODE . " mode.");
 
