@@ -6,9 +6,9 @@ logging:
   level: debug
   file:
     # ui means webui to read mails.
-    ui: ./log/pjmail-ui.log
+    ui: ./log-webui/pjmail-ui.log
     # mail means the interface to postfix.
-    mail: ./log/pjmail-mail.log
+    mail: ./log-postfix/pjmail-mail.log
 # project_ticket_separator is a character that divides a username of a mail address into a project and a ticket number.
 # e.g. When project_ticket_separator is "-", greatproject-123@my-awesome-product.com will be parsed such as
 # the project is greatproject and the ticket number is 123.

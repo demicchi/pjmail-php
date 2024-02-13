@@ -1,4 +1,4 @@
-#!/usr/bin/php
+#!/usr/bin/env php
 <?php
 
 namespace StudioDemmys\pjmail;
@@ -9,7 +9,7 @@ use StudioDemmys\pjmail\type\Mail;
 
 try {
     define("PJMAIL_RUNNING_MODE", "mail");
-    require_once "initialize.php";
+    require_once dirname(__FILE__)."initialize.php";
     
     Logging::info("adding a mail into the db.");
     Logging::debug("running in " . PJMAIL_RUNNING_MODE . " mode.");

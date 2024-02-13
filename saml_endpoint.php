@@ -3,7 +3,7 @@
 namespace StudioDemmys\pjmail;
 
 define("PJMAIL_RUNNING_MODE", "ui");
-require_once "initialize.php";
+require_once dirname(__FILE__)."initialize.php";
 
 Logging::debug("running in " . PJMAIL_RUNNING_MODE . " mode.");
 
