@@ -20,6 +20,11 @@ class AuthSaml
     {
         $this->baseurl = static::getBaseurl();
         
+        $session_cookie_params = session_get_cookie_params();
+        $session_cookie_params["samesite"] = "None";
+        $session_cookie_params["secure"] = True;
+        session_set_cookie_params($session_cookie_params);
+        
         if (!session_start(['cookie_lifetime' => Config::getConfigOrSetIfUndefined("auth/saml/session_lifetime", static::SESSION_LIFETIME_DEFAULT)]))
             throw new PJMailException(ErrorLevel::Error, "PJMAIL_E_SAML_SESSION_FAILURE");
         Logging::debug("session id is " . session_id() . ", session: " . print_r($_SESSION, true));
@@ -117,7 +122,10 @@ class AuthSaml
         if (!$this->saml->isAuthenticated())
             throw new PJMailException(ErrorLevel::Error, "PJMAIL_E_SAML_ACS_NOT_AUTHED");
         
+        Logging::debug("changing the session id from " . session_id());
         session_regenerate_id();
+        Logging::debug("to " . session_id());
+        
         unset($_SESSION['saml_request_id']);
         $_SESSION['saml_user_data'] = $this->saml->getAttributes();
         
