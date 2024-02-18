@@ -13,6 +13,7 @@
                 <div class="d-flex justify-content-end">User: {$user_display_name|default|escape} ({$user_id|default|escape})</div>
             </div>
             <h1>{$project|escape}-{$ticket|escape}</h1>
+            <div>mail address: <a href="mailto:{$project|escape}{$separator|escape}{$ticket|escape}@{$domain|escape}">{$project|escape}{$separator|escape}{$ticket|escape}@{$domain|escape}</div>>
             <hr class="border border-primary border-3 opacity-75">
                 {if $invalid|default}
                     <div class="alert alert-danger" role="alert">

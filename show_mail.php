@@ -31,6 +31,8 @@ Logging::debug("user_id={$user_id}, user_display_name={$user_display_name}");
 $html_renderer = new HtmlRenderer();
 $html_renderer->assign('project', $project);
 $html_renderer->assign('ticket', $ticket);
+$html_renderer->assign('separator', Config::getConfig("project_ticket_separator"));
+$html_renderer->assign('domain', Config::getConfig("mail_domain"));
 $html_renderer->assign('user_id', $user_id);
 $html_renderer->assign('user_display_name', $user_display_name);
 
